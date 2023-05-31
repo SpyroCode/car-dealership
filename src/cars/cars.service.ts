@@ -5,11 +5,7 @@ import { CreateCarDto } from './dto/create-car.dto';
 
 @Injectable()
 export class CarsService {
-  private cars: Car[] = [
-    { id: uuid(), brand: 'Toyota', model: 2020 },
-    { id: uuid(), brand: 'BMW', model: 2020 },
-    { id: uuid(), brand: 'Tesla', model: 2020 },
-  ];
+  private cars: Car[] = [];
 
   findAll() {
     return this.cars;
@@ -29,5 +25,9 @@ export class CarsService {
     const carWithId: Car = { ...createCar, id: uuid() };
     this.cars.push(carWithId);
     return carWithId;
+  }
+
+  fillCars(cars: Car[]) {
+    this.cars = cars;
   }
 }
